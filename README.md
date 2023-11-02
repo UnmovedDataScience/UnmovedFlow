@@ -15,11 +15,26 @@ For practical implementations of UnmovedFlow, visit our Kaggle profile:
 To get started with UnmovedFlow on Kaggle, Colab, or locally, execute the following commands:
 
 ```python
-!wget https://github.com/UnmovedDataScience/UnmovedFlow/raw/main/UnmovedFlow.ipynb
-
+import os
 import nbformat
 
-with open('UnmovedFlow.ipynb') as f:
+# URL to download
+url = "https://github.com/UnmovedDataScience/UnmovedFlow/raw/main/UnmovedFlow.ipynb"
+filename = "UnmovedFlow.ipynb"
+
+# Attempt to use wget, if it fails, download using requests
+wget_success = os.system(f'wget {url} -O {filename}')
+
+if wget_success != 0:
+    # If wget fails (returns non-zero exit status), use the Python-based method
+    import requests
+
+    response = requests.get(url)
+    with open(filename, 'wb') as f:
+        f.write(response.content)
+
+# Execute the notebook
+with open(filename) as f:
     notebook = nbformat.read(f, as_version=4)
 
 for cell in notebook.cells:

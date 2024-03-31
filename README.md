@@ -17,7 +17,7 @@ import os
 import nbformat
 
 # URL to download
-url = "https://github.com/UnmovedDataScience/UnmovedFlow/raw/main/UnmovedFlow.ipynb"
+url = "https://github.com/UnmovedDataScience/UnmovedFlow/raw/main/UnmovedFlowV2.ipynb"
 filename = "UnmovedFlowV2.ipynb"
 
 # Attempt to use wget, if it fails, download using requests
